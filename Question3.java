@@ -15,7 +15,7 @@ public class Question3 {
 		 // Switch to the top frame
 		driver.switchTo().frame("frame-top");
 		// Verify there are three frames on the page
-		int FrameCount = driver.findElements(By.tagName("frame")).size();
+		int FrameCount = driver.findElements(By.xpath("/html[contains(.,'TOP')]")).size();
 		if(FrameCount ==3)
 		{
 			System.out.println("There are three frames");
@@ -29,7 +29,7 @@ public class Question3 {
 		 driver.switchTo().frame("frame-left");
 	        
 	        // Verify the left frame has a text "LEFT"
-	        String leftFrameText = driver.findElement(By.tagName("body")).getText();
+	        String leftFrameText = driver.findElement(By.xpath("/html[contains(.,'LEFT')]")).getText();
 	        if (leftFrameText.contains("LEFT"))
 	        {
 	            System.out.println("We are in Left frame and it contains text 'LEFT'");
@@ -47,7 +47,7 @@ public class Question3 {
 	      driver.switchTo().frame("frame-middle");
 	        
 	         // Verify the middle frame has a text "MIDDLE"
-	         String middleFrameText = driver.findElement(By.id("content")).getText();
+	         String middleFrameText = driver.findElement(By.xpath("//body/div[contains(.,'MIDDLE')]")).getText();
 	         
 	        if (middleFrameText.contains("MIDDLE")) 
 	        {
@@ -66,7 +66,7 @@ public class Question3 {
 	        driver.switchTo().frame("frame-right");
 	        
 	        // Verify the right frame has a text "RIGHT"
-	        String rightFrameText = driver.findElement(By.tagName("body")).getText();
+	        String rightFrameText = driver.findElement(By.xpath("/html[contains(.,'RIGHT')]")).getText();
 	        
 	       if (rightFrameText.contains("RIGHT")) 
 	        {
@@ -80,12 +80,12 @@ public class Question3 {
 	        // Switch back to the top frame
 	       driver.switchTo().defaultContent();
 			driver.switchTo().frame("frame-bottom");
-			WebElement BottomFrameText=driver.findElement(By.tagName("body"));
+			WebElement BottomFrameText=driver.findElement(By.xpath("/html[contains(.,'BOTTOM')]"));
 			String bottom=BottomFrameText.getText();
 			System.out.println("We are in Bottom frame asn it contains text "+bottom);
 	        
 			String pageTitle = driver.getTitle();
-	        if (pageTitle.equals("Frame"))
+	        if (pageTitle.equals("Frames"))
 	        {
 	            System.out.println("Page title is 'Frames'.");
 	        }
@@ -99,9 +99,9 @@ public class Question3 {
 }
 
 OUTPUT:
-There are three frames
+There are no three frames 
 We are in Left frame and it contains text 'LEFT'
 We are in Middle frame and it contains text 'MIDDLE'
 We are in Right frame and it contains text 'RIGHT'.
 We are in Bottom frame asn it contains text BOTTOM
-Page title is not 'Frames'
+Page title is not 'Frames'.
